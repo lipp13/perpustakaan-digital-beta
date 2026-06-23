@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Header from '@/components/ui/Header';
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
@@ -108,6 +109,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

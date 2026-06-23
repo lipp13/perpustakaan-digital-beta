@@ -70,7 +70,7 @@ export default function UsersPage() {
     const hardcodedRoles = [
       { id: 1, name: 'admin' },
       { id: 2, name: 'petugas' },
-      { id: 3, name: 'user' }
+      { id: 3, name: 'umum' }
     ];
     setRoles(hardcodedRoles);
   } catch (error) {

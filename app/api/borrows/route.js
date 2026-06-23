@@ -7,6 +7,54 @@ function formatDateToMySQL(date) {
   return date.toISOString().slice(0, 19).replace('T', ' ');
 }
 
+// GET: Fetch borrow requests
+export async function GET(request) {
+  try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    const { searchParams } = new URL(request.url);
+    const userId = searchParams.get('user_id') || session.user.id;
+
+    // Users can only view their own borrows, unless they're admin/petugas
+    if (userId !== session.user.id && session.user.role !== 'admin' && session.user.role !== 'petugas') {
+      return NextResponse.json(
+        { error: 'Forbidden' },
+        { status: 403 }
+      );
+    }
+
+    const borrows = await query(
+      `SELECT 
+        br.*,
+        b.title,
+        b.author,
+        b.image as cover_url,
+        b.category as category_name
+      FROM borrow_requests br
+      LEFT JOIN books b ON br.book_id = b.id
+      WHERE br.user_id = ?
+      ORDER BY br.request_date DESC`,
+      [userId]
+    );
+
+    return NextResponse.json(borrows);
+  } catch (error) {
+    console.error('Get borrows error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+// POST: Create new borrow request
 export async function POST(request) {
   try {
     const session = await getServerSession(authOptions);

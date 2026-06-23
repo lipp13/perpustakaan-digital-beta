@@ -36,7 +36,21 @@ export async function GET() {
     const pendingApprovals = pendingApprovalsResult[0]?.count || 0;
     console.log('Pending approvals:', pendingApprovals);
 
-    // 5. Aktivitas terbaru
+    // 5. Peminjaman aktif
+    const activeBorrowsResult = await query(
+      "SELECT COUNT(*) as count FROM borrow_requests WHERE status IN ('approved', 'active')"
+    );
+    const activeBorrows = activeBorrowsResult[0]?.count || 0;
+
+    // 6. Peminjaman terlambat
+    const overdueBorrowsResult = await query(
+      `SELECT COUNT(*) as count FROM borrow_requests 
+       WHERE status IN ('approved', 'active') 
+       AND borrow_end < CURDATE()`
+    );
+    const overdueBorrows = overdueBorrowsResult[0]?.count || 0;
+
+    // 7. Aktivitas terbaru
     const recentActivityResult = await query(`
       SELECT 
         br.id,
@@ -70,6 +84,8 @@ export async function GET() {
       availableBooks,
       borrowedBooks,
       pendingApprovals,
+      activeBorrows,
+      overdueBorrows,
       recentActivity
     });
     

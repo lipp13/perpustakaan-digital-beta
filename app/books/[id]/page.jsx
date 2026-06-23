@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
+import Header from "@/components/ui/Header";
 
 export default function BookDetail() {
   const { data: session, status } = useSession();
@@ -108,6 +109,7 @@ export default function BookDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -127,9 +129,12 @@ export default function BookDetail() {
             {/* Book Cover */}
             <div className="md:w-1/3 p-8">
               <img
-                src={`http://localhost:3000${book.image}`}
+                src={book.image || "/default-book-cover.jpg"}
                 alt={book.title}
-                onError={(e) => e.target.src = "/default-book-cover.png"}
+                className="w-full h-auto rounded-lg shadow-md"
+                onError={(e) => {
+                  e.target.src = "/default-book-cover.jpg";
+                }}
               />
             </div>
             {/* Book Details */}

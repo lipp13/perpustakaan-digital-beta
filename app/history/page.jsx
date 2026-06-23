@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import StatusBadge from '@/components/ui/StatusBadge';
+import Header from '@/components/ui/Header';
 
 export default function HistoryPage() {
   const { data: session, status } = useSession();
@@ -63,6 +64,7 @@ export default function HistoryPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

@@ -1,4 +1,4 @@
-export default function LoadingSpinner({ size = 'md' }) {
+export default function LoadingSpinner({ size = 'md', text = '' }) {
   const sizeClasses = {
     sm: 'h-4 w-4',
     md: 'h-8 w-8',
@@ -7,6 +7,11 @@ export default function LoadingSpinner({ size = 'md' }) {
   };
 
   return (
-    <div className={`animate-spin rounded-full border-b-2 border-blue-600 ${sizeClasses[size]}`}></div>
+    <div className="flex flex-col items-center justify-center">
+      <div className={`animate-spin rounded-full border-b-2 border-blue-600 ${sizeClasses[size]}`}></div>
+      {text && (
+        <p className="mt-4 text-gray-600 text-sm">{text}</p>
+      )}
+    </div>
   );
 }

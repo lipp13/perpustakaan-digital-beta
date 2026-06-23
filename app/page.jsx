@@ -9,38 +9,36 @@ export default function HomePage() {
         style={{
           backgroundImage:
             "url(https://smktarunabhakti.sch.id/wp-content/uploads/2023/11/ALM08013-1-scaled-700x300.jpg)",
-        }}>
+        }}
+      >
         <div className="absolute inset-0 bg-black/60"></div>
         <div className="relative z-10 text-center text-white px-6 max-w-4xl">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             Perpustakaan Digital
           </h1>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg text-blue-400">
+            Taruna Bhakti
+          </h2>
 
-          <div className="relative z-10 text-center text-white px-6 max-w-4xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg text-blue-500">
-              Taruna Bhakti <br />
-            </h1>
+          <p className="text-lg md:text-xl mb-8 leading-relaxed text-gray-200">
+            Akses ribuan koleksi buku digital, kapan saja dan di mana saja.
+            Tingkatkan literasi dengan cara yang modern dan praktis.
+          </p>
 
-            <p className="text-lg md:text-xl mb-8 leading-relaxed text-gray-200">
-              Akses ribuan koleksi buku digital, kapan saja dan di mana saja.
-              Tingkatkan literasi dengan cara yang modern dan praktis.
-            </p>
-
-            {/* BUTTON */}
-            <div className="flex justify-center gap-4 flex-wrap">
-              <Link
-                href="/auth/register"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg"
-              >
-                Daftar Sekarang
-              </Link>
-              <Link
-                href="/auth/login"
-                className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition"
-              >
-                Masuk
-              </Link>
-            </div>
+          {/* BUTTON */}
+          <div className="flex justify-center gap-4 flex-wrap">
+            <Link
+              href="/auth/register"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg"
+            >
+              Daftar Sekarang
+            </Link>
+            <Link
+              href="/auth/login"
+              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition"
+            >
+              Masuk
+            </Link>
           </div>
         </div>
       </section>
@@ -104,38 +102,18 @@ export default function HomePage() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {["Laskar Pelangi", "Bumi", "Negeri 5 Menara"].map(
-              (book, idx) => (
-                <div
-                  key={idx}
-                  className="bg-gray-50 rounded-xl shadow hover:shadow-xl p-4 transition"
-                >
-                  <h3 className="text-lg font-semibold mt-4">{book}</h3>
-                  <p className="text-gray-500 text-sm mb-3">Penulis Terkenal</p>
-                  <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                    Pinjam Buku
-                  </button>
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONI */}
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-10">💬 Apa Kata Pengguna?</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Testi
-              quote="Sejak pakai perpustakaan digital ini, saya jadi lebih rajin membaca."
-              name="Siswa RPL"
-            />
-            <Testi
-              quote="Sangat membantu guru dan siswa untuk pembelajaran."
-              name="Guru Bahasa Indonesia"
-            />
+            {["Laskar Pelangi", "Bumi", "Negeri 5 Menara"].map((book, idx) => (
+              <div
+                key={idx}
+                className="bg-gray-50 rounded-xl shadow hover:shadow-xl p-4 transition"
+              >
+                <h3 className="text-lg font-semibold mt-4">{book}</h3>
+                <p className="text-gray-500 text-sm mb-3">Penulis Terkenal</p>
+                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                  Pinjam Buku
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -158,9 +136,7 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer className="bg-gray-900 text-white py-10 text-center">
         <p>© 2025 Perpustakaan Digital – Taruna Bhakti</p>
-        <p className="text-sm text-gray-400 mt-2">
-          Project Asesmen
-        </p>
+        <p className="text-sm text-gray-400 mt-2">Project Asesmen</p>
       </footer>
     </div>
   );
@@ -172,15 +148,6 @@ function Stat({ number, label }) {
     <div>
       <div className="text-4xl font-bold text-blue-600 mb-2">{number}</div>
       <p className="text-gray-600">{label}</p>
-    </div>
-  );
-}
-
-function Testi({ quote, name }) {
-  return (
-    <div className="bg-white p-6 rounded-xl shadow">
-      <p className="italic text-gray-700 mb-4">“{quote}”</p>
-      <h4 className="font-semibold text-blue-600">— {name}</h4>
     </div>
   );
 }
