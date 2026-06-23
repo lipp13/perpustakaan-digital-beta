@@ -157,15 +157,6 @@ export default function PetugasDashboard() {
       action: "Lihat & kelola peminjaman yang sedang berlangsung",
     },
     {
-      title: "Pengembalian Buku",
-      description: "Proses pengembalian buku yang sudah dipinjam",
-      href: "/petugas/pengembalian",
-      color:
-        "bg-gradient-to-br from-green-500 to-green-700 hover:from-green-600 hover:to-green-800",
-      icon: "fas fa-undo-alt",
-      action: "Terima pengembalian buku dari anggota",
-    },
-    {
       title: "Riwayat Lengkap",
       description: "Lihat semua history transaksi peminjaman",
       href: "/petugas/transactions",
@@ -235,15 +226,6 @@ export default function PetugasDashboard() {
                 >
                   <i className="fas fa-exchange-alt w-5 mr-3"></i>
                   <span className="font-medium">Transaksi</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/petugas/pengembalian"
-                  className="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100"
-                >
-                  <i className="fas fa-undo-alt w-5 mr-3"></i>
-                  <span className="font-medium">Pengembalian</span>
                 </Link>
               </li>
             </ul>

@@ -105,15 +105,6 @@ export default function TransactionsPage() {
                   <span className="font-medium">Transaksi</span>
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/petugas/pengembalian"
-                  className="flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100"
-                >
-                  <i className="fas fa-undo-alt w-5 mr-3"></i>
-                  <span className="font-medium">Pengembalian</span>
-                </Link>
-              </li>
             </ul>
           </nav>
         </div>
